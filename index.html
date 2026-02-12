@@ -27,6 +27,7 @@
   --gray-100: #f3f4f6;
   --gray-200: #e5e7eb;
   --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
   --gray-500: #6b7280;
   --gray-600: #4b5563;
   --gray-700: #374151;
@@ -55,16 +56,17 @@ body {
 /* NAV */
 nav {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.97);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--gray-200);
-  padding: 16px 0;
+  padding: 14px 0;
 }
 nav .container {
   display: flex; align-items: center; justify-content: space-between;
 }
 .nav-logo {
-  font-size: 24px; font-weight: 800; color: var(--blue-900); text-decoration: none;
+  font-size: 26px; font-weight: 900; color: var(--blue-900); text-decoration: none;
+  letter-spacing: -0.02em;
 }
 .nav-logo span { color: var(--orange-500); }
 .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
@@ -78,206 +80,201 @@ nav .container {
   border-radius: 8px; font-weight: 600; transition: all 0.2s;
 }
 .nav-cta:hover { background: var(--orange-600); transform: translateY(-1px); }
+.nav-phone {
+  font-weight: 700; color: var(--blue-900) !important; font-size: 15px;
+  display: flex; align-items: center; gap: 6px;
+}
 
 /* HERO */
 .hero {
-  background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 100%);
-  padding: 80px 0 60px;
+  background: linear-gradient(160deg, var(--blue-900) 0%, #0f3d6b 50%, var(--blue-700) 100%);
+  padding: 64px 0 72px;
   position: relative;
   overflow: hidden;
 }
 .hero::before {
   content: '';
-  position: absolute; top: -50%; right: -20%; width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(43,125,233,0.15) 0%, transparent 70%);
+  position: absolute; top: -40%; right: -15%; width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(43,125,233,0.12) 0%, transparent 70%);
   border-radius: 50%;
 }
 .hero::after {
   content: '';
-  position: absolute; bottom: -30%; left: -10%; width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(245,130,13,0.1) 0%, transparent 70%);
+  position: absolute; bottom: -20%; left: -5%; width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(245,130,13,0.08) 0%, transparent 70%);
   border-radius: 50%;
 }
-.hero .container { position: relative; z-index: 2; }
-.hero-content { text-align: center; max-width: 800px; margin: 0 auto; }
+.hero .container { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 420px; gap: 56px; align-items: center; }
+.hero-content { }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
-  padding: 8px 16px; border-radius: 100px; margin-bottom: 24px;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+  padding: 8px 18px; border-radius: 100px; margin-bottom: 20px;
   font-size: 14px; color: rgba(255,255,255,0.9); font-weight: 500;
 }
-.hero-badge .dot { width: 8px; height: 8px; background: var(--green-500); border-radius: 50%; animation: pulse 2s infinite; }
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+.hero-badge .dot { width: 8px; height: 8px; background: var(--green-500); border-radius: 50%; animation: dotPulse 2s infinite; }
+@keyframes dotPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.85); } }
+
 .hero h1 {
-  font-size: clamp(36px, 5vw, 56px); font-weight: 900; color: #fff;
-  line-height: 1.1; margin-bottom: 20px;
-  letter-spacing: -0.03em;
+  font-size: clamp(34px, 4.5vw, 52px); font-weight: 900; color: #fff;
+  line-height: 1.08; margin-bottom: 18px; letter-spacing: -0.03em;
 }
 .hero h1 .highlight { color: var(--orange-400); }
 .hero-sub {
-  font-size: 20px; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 40px;
-  line-height: 1.5;
+  font-size: 18px; color: rgba(255,255,255,0.75); max-width: 520px;
+  margin-bottom: 32px; line-height: 1.55;
 }
+.hero-stats {
+  display: flex; gap: 32px;
+}
+.hero-stat-number { font-size: 28px; font-weight: 800; color: #fff; }
+.hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
 
-/* STATS */
-.stats-bar {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
-  background: rgba(255,255,255,0.08); border-radius: var(--radius-lg);
-  overflow: hidden; max-width: 800px; margin: 0 auto;
-}
-.stat-item {
-  padding: 24px 16px; text-align: center;
-  background: rgba(255,255,255,0.05);
-  transition: background 0.3s;
-}
-.stat-item:hover { background: rgba(255,255,255,0.1); }
-.stat-number {
-  font-size: 32px; font-weight: 800; color: #fff;
-  letter-spacing: -0.02em;
-}
-.stat-label {
-  font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px;
-  font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;
-}
-
-/* FORM SECTION */
-.form-section {
-  padding: 80px 0;
-  background: var(--gray-50);
-}
-.form-section .container {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
-}
-.form-left h2 {
-  font-size: 36px; font-weight: 800; color: var(--blue-900);
-  line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.02em;
-}
-.form-left p { color: var(--gray-600); font-size: 17px; margin-bottom: 32px; }
-
-.form-benefits { display: flex; flex-direction: column; gap: 20px; }
-.form-benefit {
-  display: flex; gap: 16px; align-items: start;
-}
-.benefit-icon {
-  width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
-  font-size: 22px; flex-shrink: 0;
-}
-.benefit-icon.blue { background: var(--blue-100); }
-.benefit-icon.green { background: var(--green-100); }
-.benefit-icon.orange { background: #fff3e0; }
-.benefit-title { font-weight: 700; color: var(--gray-900); margin-bottom: 2px; }
-.benefit-desc { font-size: 14px; color: var(--gray-500); }
-
-/* FORM CARD */
-.form-card {
+/* HERO FORM */
+.hero-form-card {
   background: #fff;
   border-radius: var(--radius-xl);
-  padding: 40px;
-  box-shadow: var(--shadow-2xl);
-  border: 1px solid var(--gray-200);
+  padding: 36px 32px;
+  box-shadow: 0 30px 60px -12px rgba(0,0,0,0.35);
 }
-.form-card h3 {
-  font-size: 24px; font-weight: 800; text-align: center; margin-bottom: 8px;
+.hero-form-card h3 {
+  font-size: 22px; font-weight: 800; text-align: center; margin-bottom: 4px;
   color: var(--blue-900);
 }
-.form-card .form-sub {
-  text-align: center; color: var(--gray-500); font-size: 14px; margin-bottom: 28px;
+.hero-form-card .form-sub {
+  text-align: center; color: var(--gray-500); font-size: 14px; margin-bottom: 24px;
 }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-.form-group { display: flex; flex-direction: column; gap: 6px; }
-.form-group.full { grid-column: 1 / -1; }
+.form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
 .form-group label {
-  font-size: 13px; font-weight: 600; color: var(--gray-700); text-transform: uppercase;
-  letter-spacing: 0.03em;
+  font-size: 12px; font-weight: 700; color: var(--gray-600); text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
-.form-group label .optional { color: var(--gray-400); font-weight: 400; text-transform: none; }
-.form-group input, .form-group select {
-  padding: 14px 16px; border: 1.5px solid var(--gray-200); border-radius: 10px;
+.form-group input, .form-group textarea {
+  padding: 13px 16px; border: 1.5px solid var(--gray-200); border-radius: 10px;
   font-size: 15px; font-family: inherit; color: var(--gray-800);
-  transition: all 0.2s; background: #fff;
-  -webkit-appearance: none;
+  transition: all 0.2s; background: var(--gray-50);
+  -webkit-appearance: none; resize: vertical;
 }
-.form-group input:focus, .form-group select:focus {
-  outline: none; border-color: var(--blue-500);
-  box-shadow: 0 0 0 4px rgba(43,125,233,0.1);
+.form-group input:focus, .form-group textarea:focus {
+  outline: none; border-color: var(--blue-500); background: #fff;
+  box-shadow: 0 0 0 4px rgba(43,125,233,0.08);
 }
-.form-group input::placeholder { color: var(--gray-400); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: var(--gray-400); }
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-row-2 .form-group { margin-bottom: 0; }
 
+/* PULSING CTA */
 .form-submit {
   width: 100%; padding: 18px;
-  background: linear-gradient(135deg, var(--orange-500) 0%, var(--orange-600) 100%);
+  background: linear-gradient(135deg, var(--orange-500) 0%, #e06800 100%);
   color: #fff; border: none; border-radius: 12px;
-  font-size: 18px; font-weight: 700; font-family: inherit;
+  font-size: 17px; font-weight: 800; font-family: inherit;
   cursor: pointer; transition: all 0.3s;
-  margin-top: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  box-shadow: 0 4px 15px rgba(245,130,13,0.3);
+  margin-top: 6px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 20px rgba(245,130,13,0.35);
+  animation: btnPulse 2.5s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+.form-submit::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0% { left: -100%; }
+  50%, 100% { left: 100%; }
+}
+@keyframes btnPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 4px 20px rgba(245,130,13,0.35); }
+  50% { transform: scale(1.02); box-shadow: 0 6px 30px rgba(245,130,13,0.5); }
 }
 .form-submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(245,130,13,0.4);
+  transform: scale(1.03);
+  box-shadow: 0 8px 30px rgba(245,130,13,0.5);
+  animation: none;
 }
 .form-guarantee {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  margin-top: 16px; font-size: 13px; color: var(--gray-500);
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  margin-top: 14px; font-size: 12px; color: var(--gray-500);
 }
-.form-guarantee svg { color: var(--green-500); }
+.form-guarantee svg { flex-shrink: 0; }
 
-/* TRUST BADGES */
-.trust-badges {
-  display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px;
-  padding: 48px 0;
-  border-bottom: 1px solid var(--gray-200);
+/* TRUST BAR */
+.trust-bar {
+  background: #fff; border-bottom: 1px solid var(--gray-100);
+  padding: 20px 0;
 }
-.trust-badge {
-  text-align: center; padding: 16px 8px;
+.trust-bar-inner {
+  display: flex; justify-content: center; align-items: center; gap: 32px; flex-wrap: wrap;
 }
-.trust-badge-icon { font-size: 28px; margin-bottom: 8px; }
-.trust-badge-text { font-size: 12px; font-weight: 600; color: var(--gray-700); line-height: 1.3; }
+.trust-bar-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; color: var(--gray-600);
+}
+.trust-bar-item .icon { font-size: 18px; }
 
-/* LOGOS */
-.logos-section { padding: 64px 0; text-align: center; background: #fff; }
+/* LOGOS SECTION */
+.logos-section { padding: 56px 0; text-align: center; background: var(--gray-50); }
 .logos-section .section-label {
-  font-size: 13px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.1em; color: var(--gray-500); margin-bottom: 12px;
-}
-.logos-section h2 {
-  font-size: 28px; font-weight: 800; color: var(--blue-900); margin-bottom: 40px;
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--gray-400); margin-bottom: 28px;
 }
 .logos-grid {
   display: flex; justify-content: center; align-items: center; gap: 48px;
-  flex-wrap: wrap; opacity: 0.6;
+  flex-wrap: wrap;
 }
 .logo-item {
-  font-size: 20px; font-weight: 700; color: var(--gray-700);
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 12px;
+  filter: grayscale(100%) opacity(0.55);
+  transition: all 0.3s;
+}
+.logo-item:hover { filter: grayscale(0%) opacity(1); }
+.logo-item img {
+  height: 40px; width: auto; object-fit: contain;
+}
+.logo-item .logo-text {
+  font-size: 13px; font-weight: 700; color: var(--gray-600);
+  white-space: nowrap;
 }
 
+/* BENEFITS / VALUE PROPS */
+.benefits-section { padding: 72px 0; background: #fff; }
+.benefits-header { text-align: center; margin-bottom: 48px; }
+.benefits-header h2 { font-size: 34px; font-weight: 800; color: var(--blue-900); margin-bottom: 10px; letter-spacing: -0.02em; }
+.benefits-header p { color: var(--gray-500); font-size: 17px; }
+.benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.benefit-card {
+  background: var(--gray-50); border-radius: var(--radius-lg); padding: 32px;
+  border: 1px solid var(--gray-100); transition: all 0.3s;
+}
+.benefit-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--gray-200); }
+.benefit-card-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; margin-bottom: 16px;
+}
+.benefit-card-icon.blue { background: var(--blue-100); }
+.benefit-card-icon.green { background: var(--green-100); }
+.benefit-card-icon.orange { background: #fff3e0; }
+.benefit-card h3 { font-size: 17px; font-weight: 700; color: var(--gray-900); margin-bottom: 6px; }
+.benefit-card p { font-size: 14px; color: var(--gray-500); line-height: 1.6; }
+
 /* PERSONAL TOUCH */
-.personal-section {
-  padding: 80px 0;
-  background: var(--blue-50);
-}
-.personal-section .container {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
-}
+.personal-section { padding: 80px 0; background: var(--blue-50); }
+.personal-section .container { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 .personal-content .section-label {
-  font-size: 13px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.1em; color: var(--blue-600); margin-bottom: 12px;
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--blue-600); margin-bottom: 12px;
 }
-.personal-content h2 {
-  font-size: 36px; font-weight: 800; color: var(--blue-900);
-  line-height: 1.2; margin-bottom: 20px;
-}
-.personal-content p {
-  font-size: 17px; color: var(--gray-600); line-height: 1.7; margin-bottom: 16px;
-}
+.personal-content h2 { font-size: 34px; font-weight: 800; color: var(--blue-900); line-height: 1.2; margin-bottom: 18px; }
+.personal-content p { font-size: 16px; color: var(--gray-600); line-height: 1.7; margin-bottom: 14px; }
 .personal-quote {
-  padding: 24px;
-  background: #fff; border-radius: var(--radius); border-left: 4px solid var(--orange-500);
-  box-shadow: var(--shadow-md);
-  margin-top: 24px;
+  padding: 24px; background: #fff; border-radius: var(--radius);
+  border-left: 4px solid var(--orange-500); box-shadow: var(--shadow-md); margin-top: 24px;
 }
 .personal-quote p { font-style: italic; color: var(--gray-700); margin-bottom: 8px; font-size: 15px; }
 .personal-quote .attribution { font-style: normal; font-weight: 600; font-size: 13px; color: var(--gray-500); }
@@ -292,159 +289,139 @@ nav .container {
 .personal-visual .sub-stat { font-size: 15px; color: rgba(255,255,255,0.7); }
 
 /* TESTING */
-.testing-section { padding: 64px 0; text-align: center; background: #fff; }
-.testing-section h2 { font-size: 32px; font-weight: 800; color: var(--blue-900); margin-bottom: 12px; }
-.testing-section .section-sub { color: var(--gray-500); margin-bottom: 40px; font-size: 16px; }
-.test-badges { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+.testing-section { padding: 56px 0; text-align: center; background: #fff; }
+.testing-section h2 { font-size: 30px; font-weight: 800; color: var(--blue-900); margin-bottom: 10px; }
+.testing-section .section-sub { color: var(--gray-500); margin-bottom: 32px; font-size: 16px; }
+.test-badges { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
 .test-badge {
-  padding: 20px 32px; background: var(--gray-50); border: 1.5px solid var(--gray-200);
-  border-radius: var(--radius); font-weight: 700; font-size: 16px; color: var(--blue-900);
-  display: flex; align-items: center; gap: 10px;
-  transition: all 0.2s;
+  padding: 14px 24px; background: var(--gray-50); border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius); font-weight: 700; font-size: 15px; color: var(--blue-900);
+  display: flex; align-items: center; gap: 8px; transition: all 0.2s;
 }
 .test-badge:hover { border-color: var(--blue-400); background: var(--blue-50); }
-.test-badge .check { color: var(--green-500); font-size: 18px; }
+.test-badge .check { color: var(--green-500); font-size: 16px; }
 
-/* RISK ELIMINATION */
-.risk-section { padding: 80px 0; background: var(--gray-50); }
-.risk-section .section-header { text-align: center; margin-bottom: 48px; }
-.risk-section h2 { font-size: 36px; font-weight: 800; color: var(--blue-900); margin-bottom: 12px; }
+/* RISK */
+.risk-section { padding: 72px 0; background: var(--gray-50); }
+.risk-section .section-header { text-align: center; margin-bottom: 44px; }
+.risk-section h2 { font-size: 34px; font-weight: 800; color: var(--blue-900); margin-bottom: 10px; }
 .risk-section .section-sub { color: var(--gray-500); font-size: 17px; }
-.risk-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-}
+.risk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .risk-card {
-  background: #fff; border-radius: var(--radius-lg); padding: 32px;
-  box-shadow: var(--shadow-md); border: 1px solid var(--gray-100);
-  transition: all 0.3s;
+  background: #fff; border-radius: var(--radius-lg); padding: 28px;
+  box-shadow: var(--shadow-sm); border: 1px solid var(--gray-100); transition: all 0.3s;
 }
-.risk-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-xl); }
+.risk-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
 .risk-card-icon {
-  width: 56px; height: 56px; border-radius: 14px;
+  width: 48px; height: 48px; border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 26px; margin-bottom: 16px;
+  font-size: 22px; margin-bottom: 14px;
 }
 .risk-card-icon.blue { background: var(--blue-100); }
 .risk-card-icon.green { background: var(--green-100); }
 .risk-card-icon.orange { background: #fff3e0; }
-.risk-card h3 { font-size: 18px; font-weight: 700; color: var(--gray-900); margin-bottom: 8px; }
-.risk-card p { font-size: 14px; color: var(--gray-500); line-height: 1.6; }
+.risk-card h3 { font-size: 16px; font-weight: 700; color: var(--gray-900); margin-bottom: 6px; }
+.risk-card p { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
 
-/* PRICING TIERS */
-.pricing-section { padding: 80px 0; background: #fff; }
-.pricing-section .section-header { text-align: center; margin-bottom: 48px; }
-.pricing-section h2 { font-size: 36px; font-weight: 800; color: var(--blue-900); margin-bottom: 12px; }
+/* PRICING */
+.pricing-section { padding: 72px 0; background: #fff; }
+.pricing-section .section-header { text-align: center; margin-bottom: 44px; }
+.pricing-section h2 { font-size: 34px; font-weight: 800; color: var(--blue-900); margin-bottom: 10px; }
 .pricing-section .section-sub { color: var(--gray-500); font-size: 17px; }
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .pricing-card {
-  border-radius: var(--radius-lg); padding: 36px; text-align: center;
-  border: 2px solid var(--gray-200); transition: all 0.3s;
-  position: relative;
+  border-radius: var(--radius-lg); padding: 32px; text-align: center;
+  border: 2px solid var(--gray-200); transition: all 0.3s; position: relative;
 }
 .pricing-card:hover { border-color: var(--blue-400); }
-.pricing-card.featured {
-  border-color: var(--blue-500);
-  box-shadow: var(--shadow-xl);
-  transform: scale(1.03);
-}
+.pricing-card.featured { border-color: var(--blue-500); box-shadow: var(--shadow-xl); transform: scale(1.03); }
 .pricing-card.featured::before {
-  content: 'MOST POPULAR';
-  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-  background: var(--blue-500); color: #fff; padding: 4px 20px;
-  border-radius: 100px; font-size: 11px; font-weight: 700;
-  letter-spacing: 0.05em;
+  content: 'MOST POPULAR'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--blue-500); color: #fff; padding: 4px 20px; border-radius: 100px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
 }
-.pricing-tier { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.pricing-tier { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
 .pricing-card:nth-child(1) .pricing-tier { color: var(--blue-600); }
 .pricing-card:nth-child(2) .pricing-tier { color: var(--orange-500); }
 .pricing-card:nth-child(3) .pricing-tier { color: var(--green-500); }
-.pricing-savings { font-size: 32px; font-weight: 800; color: var(--gray-900); margin-bottom: 4px; }
+.pricing-savings { font-size: 30px; font-weight: 800; color: var(--gray-900); margin-bottom: 4px; }
 .pricing-desc { font-size: 14px; color: var(--gray-500); margin-bottom: 24px; }
-.pricing-features { list-style: none; text-align: left; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
-.pricing-features li {
-  font-size: 14px; color: var(--gray-700); display: flex; align-items: start; gap: 10px;
-}
-.pricing-features li::before {
-  content: '✓'; color: var(--green-500); font-weight: 700; flex-shrink: 0;
-}
+.pricing-features { list-style: none; text-align: left; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.pricing-features li { font-size: 14px; color: var(--gray-700); display: flex; align-items: start; gap: 8px; }
+.pricing-features li::before { content: '\2713'; color: var(--green-500); font-weight: 700; flex-shrink: 0; }
 .pricing-btn {
   display: block; width: 100%; padding: 14px; border-radius: 10px;
   font-size: 15px; font-weight: 700; text-decoration: none; text-align: center;
   transition: all 0.2s; cursor: pointer; border: none; font-family: inherit;
 }
-.pricing-btn.primary {
-  background: var(--orange-500); color: #fff;
-  box-shadow: 0 4px 12px rgba(245,130,13,0.25);
-}
+.pricing-btn.primary { background: var(--orange-500); color: #fff; box-shadow: 0 4px 12px rgba(245,130,13,0.25); }
 .pricing-btn.primary:hover { background: var(--orange-600); transform: translateY(-1px); }
-.pricing-btn.secondary {
-  background: var(--gray-100); color: var(--gray-700);
-}
+.pricing-btn.secondary { background: var(--gray-100); color: var(--gray-700); }
 .pricing-btn.secondary:hover { background: var(--gray-200); }
 
 /* TESTIMONIALS */
-.testimonials-section { padding: 80px 0; background: var(--blue-900); }
-.testimonials-section .section-header { text-align: center; margin-bottom: 48px; }
-.testimonials-section h2 { font-size: 36px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+.testimonials-section { padding: 72px 0; background: var(--blue-900); }
+.testimonials-section .section-header { text-align: center; margin-bottom: 44px; }
+.testimonials-section h2 { font-size: 34px; font-weight: 800; color: #fff; margin-bottom: 10px; }
 .testimonials-section .section-sub { color: rgba(255,255,255,0.6); font-size: 17px; }
-.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .testimonial-card {
-  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
-  border-radius: var(--radius-lg); padding: 32px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg); padding: 28px;
 }
-.testimonial-stars { color: var(--orange-400); font-size: 16px; margin-bottom: 16px; letter-spacing: 2px; }
-.testimonial-text { color: rgba(255,255,255,0.85); font-size: 15px; line-height: 1.7; margin-bottom: 20px; }
+.testimonial-stars { color: var(--orange-400); font-size: 15px; margin-bottom: 14px; letter-spacing: 2px; }
+.testimonial-text { color: rgba(255,255,255,0.85); font-size: 14px; line-height: 1.7; margin-bottom: 18px; }
 .testimonial-author { font-weight: 600; color: #fff; font-size: 14px; }
-.testimonial-role { color: rgba(255,255,255,0.5); font-size: 13px; margin-top: 2px; }
-
-/* PRICE MATCH */
-.pricematch-section { padding: 64px 0; background: linear-gradient(135deg, var(--orange-500), var(--orange-600)); text-align: center; }
-.pricematch-section h2 { font-size: 36px; font-weight: 800; color: #fff; margin-bottom: 12px; }
-.pricematch-section p { color: rgba(255,255,255,0.9); font-size: 18px; max-width: 600px; margin: 0 auto 32px; }
-.pricematch-btn {
-  display: inline-block; padding: 16px 40px; background: #fff; color: var(--orange-600);
-  border-radius: 10px; font-size: 16px; font-weight: 700; text-decoration: none;
-  transition: all 0.2s; box-shadow: var(--shadow-lg);
-}
-.pricematch-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-xl); }
+.testimonial-role { color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 2px; }
 
 /* FINAL CTA */
 .final-cta {
-  padding: 80px 0; background: var(--gray-50); text-align: center;
+  padding: 72px 0; background: linear-gradient(135deg, var(--gray-50), #fff); text-align: center;
 }
-.final-cta h2 { font-size: 40px; font-weight: 900; color: var(--blue-900); margin-bottom: 16px; }
-.final-cta p { font-size: 18px; color: var(--gray-500); margin-bottom: 32px; }
+.final-cta h2 { font-size: 38px; font-weight: 900; color: var(--blue-900); margin-bottom: 14px; letter-spacing: -0.02em; }
+.final-cta p { font-size: 18px; color: var(--gray-500); margin-bottom: 28px; }
 .final-cta-btn {
   display: inline-block; padding: 20px 48px;
   background: linear-gradient(135deg, var(--orange-500), var(--orange-600));
   color: #fff; border-radius: 12px; font-size: 18px; font-weight: 700;
   text-decoration: none; transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(245,130,13,0.3);
+  box-shadow: 0 4px 20px rgba(245,130,13,0.3);
+  animation: btnPulse 2.5s ease-in-out infinite;
 }
-.final-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(245,130,13,0.4); }
+.final-cta-btn:hover { transform: scale(1.03); box-shadow: 0 8px 30px rgba(245,130,13,0.45); animation: none; }
 .final-cta .phone { margin-top: 20px; font-size: 20px; font-weight: 700; color: var(--blue-900); }
+.final-cta .phone a { color: var(--blue-900); text-decoration: none; }
 .final-cta .phone-sub { font-size: 14px; color: var(--gray-500); }
 
 /* FOOTER */
 footer {
-  padding: 40px 0; background: var(--blue-900); text-align: center;
-  color: rgba(255,255,255,0.5); font-size: 14px;
+  padding: 36px 0; background: var(--blue-900); text-align: center;
+  color: rgba(255,255,255,0.5); font-size: 13px;
 }
 footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
 footer a:hover { color: #fff; }
-footer .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; }
+footer .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 12px; }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
-  .stats-bar { grid-template-columns: repeat(2, 1fr); }
-  .form-section .container { grid-template-columns: 1fr; gap: 40px; }
+@media (max-width: 900px) {
+  .hero .container { grid-template-columns: 1fr; gap: 40px; }
+  .hero-content { text-align: center; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-stats { justify-content: center; }
+  .hero-form-card { max-width: 480px; margin: 0 auto; }
   .personal-section .container { grid-template-columns: 1fr; }
-  .risk-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
-  .trust-badges { grid-template-columns: repeat(3, 1fr); }
+  .benefits-grid, .risk-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
   .pricing-card.featured { transform: none; }
   .nav-links { display: none; }
   .hero h1 { font-size: 32px; }
-  .form-row { grid-template-columns: 1fr; }
+  .logos-grid { gap: 28px; }
+  .logo-item img { height: 32px; }
+}
+
+@media (max-width: 600px) {
+  .form-row-2 { grid-template-columns: 1fr; }
+  .trust-bar-inner { gap: 16px; }
+  .hero-stats { flex-wrap: wrap; gap: 20px; }
 }
 
 /* ANIMATIONS */
@@ -456,9 +433,6 @@ footer .footer-links { display: flex; justify-content: center; gap: 24px; margin
 .animate.delay-1 { animation-delay: 0.1s; }
 .animate.delay-2 { animation-delay: 0.2s; }
 .animate.delay-3 { animation-delay: 0.3s; }
-
-/* Counter animation */
-.stat-number { font-variant-numeric: tabular-nums; }
 </style>
 </head>
 <body>
@@ -468,168 +442,144 @@ footer .footer-links { display: flex; justify-content: center; gap: 24px; margin
   <div class="container">
     <a href="#" class="nav-logo">Math<span>4</span>Sale</a>
     <ul class="nav-links">
-      <li><a href="#">Home</a></li>
+      <li><a href="#" class="nav-phone">&#9742; (800) 672-4410</a></li>
       <li><a href="#">Products</a></li>
       <li><a href="#">About Us</a></li>
-      <li><a href="#">Contact</a></li>
       <li><a href="#quote" class="nav-cta">Get a Quote</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
+<!-- HERO + FORM -->
+<section class="hero" id="quote">
   <div class="container">
     <div class="hero-content">
       <div class="hero-badge"><span class="dot"></span> Trusted by 8,000+ Schools Nationwide</div>
-      <h1>Get Your Bulk Calculator Quote <span class="highlight">in 60 Seconds</span></h1>
-      <p class="hero-sub">The #1 source for TI graphing calculators. Best prices, 90-day returns, and a 1-year warranty that actually replaces your calculator.</p>
-    </div>
-    <div class="stats-bar">
-      <div class="stat-item">
-        <div class="stat-number" data-count="8000">8,000+</div>
-        <div class="stat-label">Schools Served</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">20</div>
-        <div class="stat-label">Years in Business</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">40,000+</div>
-        <div class="stat-label">5-Star Reviews</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">1,000,000+</div>
-        <div class="stat-label">Calculators Sold</div>
+      <h1>Get Your Bulk Calculator Quote <span class="highlight">in Seconds</span></h1>
+      <p class="hero-sub">The #1 source for TI graphing calculators. Best prices guaranteed, 90-day returns, and a 1-year warranty that actually replaces your calculator.</p>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-number">20+</div>
+          <div class="hero-stat-label">Years in Business</div>
+        </div>
+        <div>
+          <div class="hero-stat-number">40,000+</div>
+          <div class="hero-stat-label">5-Star Reviews</div>
+        </div>
+        <div>
+          <div class="hero-stat-number">1M+</div>
+          <div class="hero-stat-label">Calculators Sold</div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- QUOTE FORM -->
-<section class="form-section" id="quote">
-  <div class="container">
-    <div class="form-left">
-      <h2>Every Quote Includes<br>All 3 Price Tiers</h2>
-      <p>New, Institutional, and Factory Renewed options so you can pick what fits your budget. No commitment required.</p>
-      <div class="form-benefits">
-        <div class="form-benefit">
-          <div class="benefit-icon blue">📞</div>
-          <div>
-            <div class="benefit-title">Owner Follow-Up Call</div>
-            <div class="benefit-desc">The actual owner calls you to make sure you get exactly what you need at the best price.</div>
-          </div>
-        </div>
-        <div class="form-benefit">
-          <div class="benefit-icon green">⚡</div>
-          <div>
-            <div class="benefit-title">Same-Day Quotes</div>
-            <div class="benefit-desc">Most quotes delivered within hours. Ships same day when in stock.</div>
-          </div>
-        </div>
-        <div class="form-benefit">
-          <div class="benefit-icon orange">🏷️</div>
-          <div>
-            <div class="benefit-title">Best Price Guarantee</div>
-            <div class="benefit-desc">Found it cheaper from another authorized dealer? We'll match it. Simple.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="form-card" id="quote-form">
-      <h3>Get My Quote</h3>
-      <p class="form-sub">Free, no obligation. Takes 30 seconds.</p>
+    <div class="hero-form-card" id="quote-form">
+      <h3>Get Your Free Quote</h3>
+      <p class="form-sub">No obligation. All 3 price tiers included.</p>
       <form>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Calculator Model</label>
-            <select>
-              <option value="">Select a model...</option>
-              <option>TI-84 Plus</option>
-              <option>TI-84 Plus CE</option>
-              <option>TI-84 Plus School Property</option>
-              <option>TI-84 CE School Property</option>
-              <option>TI-83 Plus</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Quantity Needed</label>
-            <input type="number" placeholder="e.g. 30">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Your Name</label>
-            <input type="text" placeholder="Full name">
-          </div>
+        <div class="form-row-2">
           <div class="form-group">
             <label>Email Address</label>
-            <input type="email" placeholder="you@school.edu">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Phone <span class="optional">(optional)</span></label>
-            <input type="tel" placeholder="Best number to reach you">
+            <input type="email" placeholder="you@school.edu" required>
           </div>
           <div class="form-group">
-            <label>School Name <span class="optional">(optional)</span></label>
-            <input type="text" placeholder="Your school or district">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="(555) 123-4567" required>
           </div>
         </div>
-        <button type="submit" class="form-submit">Get My Quote in Seconds →</button>
+        <div class="form-group">
+          <label>What Do You Need?</label>
+          <textarea rows="3" placeholder="e.g. 30 TI-84 Plus CE calculators for our math department, need by August..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Get My Quote in Seconds &#8594;</button>
         <div class="form-guarantee">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a2.5 2.5 0 0 0-2.5 2.5V5h5V3.5A2.5 2.5 0 0 0 8 1zm3.5 4V3.5a3.5 3.5 0 1 0-7 0V5H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-1.5z"/></svg>
-          No spam. No commitment. Quote valid for 30 days.
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="#00a67e"><path d="M8 1a2.5 2.5 0 0 0-2.5 2.5V5h5V3.5A2.5 2.5 0 0 0 8 1zm3.5 4V3.5a3.5 3.5 0 1 0-7 0V5H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-1.5z"/></svg>
+          No spam, ever. Quote valid for 30 days.
         </div>
       </form>
     </div>
   </div>
 </section>
 
-<!-- TRUST BADGES -->
-<section style="background:#fff;">
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-bar-item"><span class="icon">&#9989;</span> Price Match Guarantee</div>
+    <div class="trust-bar-item"><span class="icon">&#128666;</span> Free Shipping Over $4,500</div>
+    <div class="trust-bar-item"><span class="icon">&#128203;</span> Purchase Orders Accepted</div>
+    <div class="trust-bar-item"><span class="icon">&#127963;</span> Tax Exempt Ready</div>
+    <div class="trust-bar-item"><span class="icon">&#8617;</span> 90-Day Returns</div>
+    <div class="trust-bar-item"><span class="icon">&#128295;</span> 1-Year Warranty</div>
+  </div>
+</div>
+
+<!-- TRUSTED BY LOGOS -->
+<section class="logos-section">
   <div class="container">
-    <div class="trust-badges">
-      <div class="trust-badge">
-        <div class="trust-badge-icon">💰</div>
-        <div class="trust-badge-text">Price Match<br>Guarantee</div>
+    <p class="section-label">Trusted by organizations that can't afford mistakes</p>
+    <div class="logos-grid">
+      <div class="logo-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Seal_of_the_United_States_Department_of_Defense.svg/250px-Seal_of_the_United_States_Department_of_Defense.svg.png" alt="Department of Defense" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="logo-text" style="display:none">Department of Defense</span>
       </div>
-      <div class="trust-badge">
-        <div class="trust-badge-icon">🚚</div>
-        <div class="trust-badge-text">Free Shipping<br>Over $4,500</div>
+      <div class="logo-item">
+        <img src="https://www.k12.com/wp-content/themes/k12-theme-v2/assets/images/k12-logo.svg" alt="K12" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="logo-text" style="display:none">K-12 Inc.</span>
       </div>
-      <div class="trust-badge">
-        <div class="trust-badge-icon">📋</div>
-        <div class="trust-badge-text">Purchase Orders<br>Accepted</div>
+      <div class="logo-item">
+        <img src="https://static.wixstatic.com/media/247920_28b0abcfd85542a09a14418860b72fb6~mv2.png/v1/fill/w_192,h_192,lg_1,usm_0.66_1.00_0.01/247920_28b0abcfd85542a09a14418860b72fb6~mv2.png" alt="Epic Charter Schools" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="logo-text" style="display:none">Epic Charter Schools</span>
       </div>
-      <div class="trust-badge">
-        <div class="trust-badge-icon">🏛️</div>
-        <div class="trust-badge-text">Tax Exempt<br>Ready</div>
+      <div class="logo-item">
+        <img src="https://a.storyblok.com/f/339575/300x78/d4eadc2531/nmsi-logo.svg" alt="National Math & Science Initiative" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="logo-text" style="display:none">NMSI</span>
       </div>
-      <div class="trust-badge">
-        <div class="trust-badge-icon">↩️</div>
-        <div class="trust-badge-text">90-Day<br>Returns</div>
-      </div>
-      <div class="trust-badge">
-        <div class="trust-badge-icon">🔧</div>
-        <div class="trust-badge-text">1-Year<br>Warranty</div>
+      <div class="logo-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Bloomfield_college_textlogo.png" alt="Bloomfield College" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="logo-text" style="display:none">Bloomfield College</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TRUSTED BY -->
-<section class="logos-section">
+<!-- VALUE PROPS -->
+<section class="benefits-section">
   <div class="container">
-    <p class="section-label">Trusted by organizations that can't afford mistakes</p>
-    <h2>From Single Classrooms to Entire Districts</h2>
-    <div class="logos-grid">
-      <div class="logo-item">🏛️ Department of Defense</div>
-      <div class="logo-item">🏫 K-12 Inc.</div>
-      <div class="logo-item">📚 Epic Charter Schools</div>
-      <div class="logo-item">🔬 National Math & Science Initiative</div>
-      <div class="logo-item">🎓 Bloomfield College</div>
+    <div class="benefits-header">
+      <h2>Why 8,000+ Schools Choose Math4Sale</h2>
+      <p>We've removed every reason to hesitate.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-card-icon blue">&#128222;</div>
+        <h3>The Owner Calls You Personally</h3>
+        <p>Not a sales rep. Not an automated email. The actual owner calls to make sure you get exactly what you need at the best price.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card-icon green">&#9889;</div>
+        <h3>Same-Day Quotes & Shipping</h3>
+        <p>Most quotes delivered within hours. When in stock, orders ship the same day. No waiting weeks for procurement.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card-icon orange">&#127991;</div>
+        <h3>Best Price, Guaranteed</h3>
+        <p>Found it cheaper from another authorized dealer? Send us the quote and we'll match it. Simple as that.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card-icon blue">&#8617;</div>
+        <h3>90-Day No-Hassle Returns</h3>
+        <p>Triple the industry standard. Something wrong? We make it right. No questions, no restocking fees.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card-icon green">&#128260;</div>
+        <h3>1-Year Exchange Warranty</h3>
+        <p>Costco-style instant replacement. No 5-6 week repair wait. Calculator dies? We send a new one.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card-icon orange">&#128203;</div>
+        <h3>Built for How Schools Buy</h3>
+        <p>POs accepted, tax exempt ready, W-9 on file, Net 30 for districts. We know procurement.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -639,12 +589,12 @@ footer .footer-links { display: flex; justify-content: center; gap: 24px; margin
   <div class="container">
     <div class="personal-content">
       <p class="section-label">What Makes Us Different</p>
-      <h2>The Owner Calls You Personally</h2>
-      <p>When you request a quote from Math4Sale, something unusual happens: you get a call from the actual owner. Not a sales rep. Not an automated email.</p>
-      <p>A real conversation to make sure you get exactly what you need at the best price for your budget. That's how we've built relationships with over 8,000 schools — one conversation at a time.</p>
+      <h2>A Real Conversation, Not a Shopping Cart</h2>
+      <p>When you request a quote from Math4Sale, something unusual happens: the actual owner calls you. A real conversation to make sure you get exactly what you need at the best price for your budget.</p>
+      <p>That's how we've built relationships with over 8,000 schools, one conversation at a time.</p>
       <div class="personal-quote">
         <p>"I called expecting a sales pitch. Instead, the owner spent 20 minutes helping me figure out which model my state required and saved our department $3,000."</p>
-        <div class="attribution">— Math Dept. Chair, Scurry-Rosser ISD</div>
+        <div class="attribution">-- Math Dept. Chair, Scurry-Rosser ISD</div>
       </div>
     </div>
     <div class="personal-visual">
@@ -662,53 +612,11 @@ footer .footer-links { display: flex; justify-content: center; gap: 24px; margin
     <h2>Approved for Every Major Test</h2>
     <p class="section-sub">Not sure which model your state requires? We'll verify before shipping.</p>
     <div class="test-badges">
-      <div class="test-badge"><span class="check">✓</span> SAT® & PSAT®</div>
-      <div class="test-badge"><span class="check">✓</span> ACT®</div>
-      <div class="test-badge"><span class="check">✓</span> AP® Exams</div>
-      <div class="test-badge"><span class="check">✓</span> IB® Diploma</div>
-      <div class="test-badge"><span class="check">✓</span> State Tests</div>
-    </div>
-  </div>
-</section>
-
-<!-- RISK ELIMINATION -->
-<section class="risk-section">
-  <div class="container">
-    <div class="section-header">
-      <h2>Zero Risk. Every Order.</h2>
-      <p class="section-sub">We've removed every reason to hesitate.</p>
-    </div>
-    <div class="risk-grid">
-      <div class="risk-card">
-        <div class="risk-card-icon blue">↩️</div>
-        <h3>90-Day Returns</h3>
-        <p>Triple the industry standard. Something wrong? We make it right. No questions, no hassle, no restocking fees.</p>
-      </div>
-      <div class="risk-card">
-        <div class="risk-card-icon green">🔄</div>
-        <h3>1-Year Exchange Warranty</h3>
-        <p>Costco-style instant replacement. No 5-6 week repair wait like TI offers. Calculator dies? We send a new one.</p>
-      </div>
-      <div class="risk-card">
-        <div class="risk-card-icon orange">⭐</div>
-        <h3>A+ BBB Rating</h3>
-        <p>Two decades of doing right by schools. Our reputation is our business. 40,000+ five-star reviews and counting.</p>
-      </div>
-      <div class="risk-card">
-        <div class="risk-card-icon blue">📄</div>
-        <h3>W-9 Ready</h3>
-        <p>Download instantly. No waiting on procurement paperwork. We know how schools buy.</p>
-      </div>
-      <div class="risk-card">
-        <div class="risk-card-icon green">📋</div>
-        <h3>POs Accepted</h3>
-        <p>We work the way schools work. Submit your PO and we handle the rest. Net 30 available for districts.</p>
-      </div>
-      <div class="risk-card">
-        <div class="risk-card-icon orange">🏛️</div>
-        <h3>Tax Exempt</h3>
-        <p>Upload your certificate once. We keep it on file for all future orders. One less thing to worry about.</p>
-      </div>
+      <div class="test-badge"><span class="check">&#10003;</span> SAT &amp; PSAT</div>
+      <div class="test-badge"><span class="check">&#10003;</span> ACT</div>
+      <div class="test-badge"><span class="check">&#10003;</span> AP Exams</div>
+      <div class="test-badge"><span class="check">&#10003;</span> IB Diploma</div>
+      <div class="test-badge"><span class="check">&#10003;</span> State Tests</div>
     </div>
   </div>
 </section>
@@ -743,7 +651,7 @@ footer .footer-links { display: flex; justify-content: center; gap: 24px; margin
           <li>Identical to new condition</li>
           <li>Best for budget-conscious districts</li>
         </ul>
-        <button class="pricing-btn primary" onclick="document.getElementById('quote-form').scrollIntoView({behavior:'smooth'})">Get Quote →</button>
+        <button class="pricing-btn primary" onclick="document.getElementById('quote-form').scrollIntoView({behavior:'smooth'})">Get Quote &#8594;</button>
       </div>
       <div class="pricing-card">
         <div class="pricing-tier">Factory Renewed</div>
@@ -770,19 +678,19 @@ footer .footer-links { display: flex; justify-content: center; gap: 24px; margin
     </div>
     <div class="testimonials-grid">
       <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <div class="testimonial-text">"Excellent quality and customer service. We ordered 200 TI-84s and every single one was perfect. We will definitely be repeat customers."</div>
         <div class="testimonial-author">Scurry-Rosser ISD</div>
         <div class="testimonial-role">Purchasing Department</div>
       </div>
       <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <div class="testimonial-text">"Fast shipping, great communication, exactly as described. The institutional pricing saved our district over $4,000 compared to our previous vendor."</div>
         <div class="testimonial-author">Goochland High School</div>
         <div class="testimonial-role">Math Department</div>
       </div>
       <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <div class="testimonial-text">"Professional, reliable, and the best prices we've found for bulk TI-84s. The fact that the owner personally called us sealed the deal."</div>
         <div class="testimonial-author">Bloomfield College</div>
         <div class="testimonial-role">Procurement Office</div>
@@ -791,23 +699,14 @@ footer .footer-links { display: flex; justify-content: center; gap: 24px; margin
   </div>
 </section>
 
-<!-- PRICE MATCH -->
-<section class="pricematch-section">
-  <div class="container">
-    <h2>💰 Best Price Guarantee</h2>
-    <p>Found the same calculator cheaper from another authorized dealer? Send us the quote and we'll match it. Simple as that.</p>
-    <a href="#quote" class="pricematch-btn" onclick="document.getElementById('quote-form').scrollIntoView({behavior:'smooth'}); return false;">Get Your Quote Now →</a>
-  </div>
-</section>
-
 <!-- FINAL CTA -->
 <section class="final-cta">
   <div class="container">
     <h2>Ready to Save on Calculators?</h2>
     <p>Join 8,000+ schools who trust Math4Sale for their TI graphing calculators.</p>
-    <a href="#quote" class="final-cta-btn" onclick="document.getElementById('quote-form').scrollIntoView({behavior:'smooth'}); return false;">Get My Free Quote →</a>
-    <div class="phone">📞 1-800-555-MATH</div>
-    <div class="phone-sub">Questions? Call us or request a callback</div>
+    <a href="#quote" class="final-cta-btn" onclick="document.getElementById('quote-form').scrollIntoView({behavior:'smooth'}); return false;">Get My Free Quote &#8594;</a>
+    <div class="phone"><a href="tel:18006724410">&#9742; (800) 672-4410</a></div>
+    <div class="phone-sub">Questions? Call us directly</div>
   </div>
 </section>
 
@@ -819,17 +718,30 @@ footer .footer-links { display: flex; justify-content: center; gap: 24px; margin
       <a href="#">Terms of Service</a>
       <a href="#">Contact</a>
     </div>
-    <p>© 2026 Math4Sale. All rights reserved. Authorized TI Dealer.</p>
+    <p>&copy; 2026 Math4Sale. All rights reserved. Authorized TI Dealer. A+ BBB Rating.</p>
   </div>
 </footer>
 
 <script>
-// Smooth scroll for anchor links
 document.querySelectorAll('a[href="#quote"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
     document.getElementById('quote-form').scrollIntoView({ behavior: 'smooth' });
   });
+});
+
+// Intersection observer for animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.benefit-card, .risk-card, .testimonial-card, .pricing-card').forEach(el => {
+  observer.observe(el);
 });
 </script>
 
