@@ -83,7 +83,7 @@ nav .container {
 
 /* HERO */
 .hero {
-  background: linear-gradient(135deg, #1565c0 0%, #1e88e5 40%, #42a5f5 100%);
+  background: linear-gradient(135deg, #1565c0 0%, #1e88e5 35%, #42a5f5 70%, #64b5f6 100%);
   padding: 56px 0 100px;
   position: relative;
   overflow: hidden;
@@ -91,13 +91,83 @@ nav .container {
 .hero::before {
   content: '';
   position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background:
+    radial-gradient(ellipse 600px 400px at 10% 20%, rgba(255,255,255,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 500px at 85% 80%, rgba(255,255,255,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 300px 300px at 50% 10%, rgba(255,255,255,0.06) 0%, transparent 70%);
 }
 .hero::after {
   content: '';
-  position: absolute; bottom: -60%; right: -10%; width: 800px; height: 800px;
-  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-  border-radius: 50%;
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='2' cy='2' r='1.5' fill='white' fill-opacity='0.08'/%3E%3C/svg%3E");
+}
+
+/* Floating decorative elements */
+.hero-decor {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: 1;
+}
+.hero-decor .shape {
+  position: absolute; opacity: 0.12;
+}
+.hero-decor .circle-1 {
+  width: 300px; height: 300px; border: 2px solid #fff; border-radius: 50%;
+  top: -80px; right: -60px;
+}
+.hero-decor .circle-2 {
+  width: 180px; height: 180px; border: 2px solid #fff; border-radius: 50%;
+  bottom: -40px; left: 5%;
+}
+.hero-decor .circle-3 {
+  width: 80px; height: 80px; background: rgba(255,255,255,0.08); border-radius: 50%;
+  top: 30%; left: 8%;
+}
+.hero-decor .diamond-1 {
+  width: 24px; height: 24px; background: rgba(255,255,255,0.15);
+  transform: rotate(45deg); top: 25%; right: 15%;
+}
+.hero-decor .diamond-2 {
+  width: 16px; height: 16px; background: rgba(255,255,255,0.1);
+  transform: rotate(45deg); top: 60%; left: 15%;
+}
+.hero-decor .diamond-3 {
+  width: 12px; height: 12px; background: rgba(255,255,255,0.12);
+  transform: rotate(45deg); top: 15%; left: 35%;
+}
+.hero-decor .dot-cluster {
+  top: 12%; left: 3%;
+  display: grid; grid-template-columns: repeat(5, 8px); gap: 8px;
+}
+.hero-decor .dot-cluster span {
+  width: 4px; height: 4px; background: rgba(255,255,255,0.2); border-radius: 50%; display: block;
+}
+.hero-decor .dot-cluster-2 {
+  bottom: 20%; right: 3%;
+  display: grid; grid-template-columns: repeat(4, 8px); gap: 8px;
+}
+.hero-decor .dot-cluster-2 span {
+  width: 4px; height: 4px; background: rgba(255,255,255,0.15); border-radius: 50%; display: block;
+}
+.hero-decor .line-1 {
+  width: 120px; height: 2px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  top: 40%; left: 2%; transform: rotate(-20deg);
+}
+.hero-decor .line-2 {
+  width: 80px; height: 2px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  bottom: 30%; right: 8%; transform: rotate(15deg);
+}
+/* Paper airplane */
+.hero-decor .plane-1 {
+  top: 18%; right: 22%; opacity: 0.15;
+}
+.hero-decor .plane-2 {
+  bottom: 25%; left: 12%; opacity: 0.1; transform: scale(0.7) rotate(-15deg);
+}
+/* Floating light beam */
+.hero-decor .beam {
+  width: 400px; height: 600px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, transparent 100%);
+  top: -100px; right: 10%; transform: rotate(15deg);
 }
 .hero .container {
   position: relative; z-index: 2;
@@ -157,7 +227,7 @@ nav .container {
   padding-bottom: 0;
 }
 .form-card {
-  max-width: 720px; margin: 0 auto;
+  max-width: 920px; margin: 0 auto;
   background: #fff;
   border-radius: var(--radius-xl);
   padding: 40px 44px;
@@ -460,6 +530,21 @@ footer .footer-links { display: flex; justify-content: center; gap: 24px; margin
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-decor">
+    <div class="shape circle-1"></div>
+    <div class="shape circle-2"></div>
+    <div class="shape circle-3"></div>
+    <div class="shape diamond-1"></div>
+    <div class="shape diamond-2"></div>
+    <div class="shape diamond-3"></div>
+    <div class="shape dot-cluster"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="shape dot-cluster-2"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="shape line-1"></div>
+    <div class="shape line-2"></div>
+    <div class="shape beam"></div>
+    <svg class="shape plane-1" width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    <svg class="shape plane-2" width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+  </div>
   <div class="container">
     <div class="hero-content">
       <h1>Why 8,000+ Schools Trust Math4Sale<br><span class="highlight">Get a Quote in Seconds!</span></h1>
