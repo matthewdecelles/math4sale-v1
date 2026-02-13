@@ -65,94 +65,121 @@ nav .container {
   display: flex; align-items: center; justify-content: space-between;
 }
 .nav-logo {
-  font-size: 26px; font-weight: 900; color: var(--blue-900); text-decoration: none;
+  font-size: 28px; font-weight: 900; color: var(--blue-600); text-decoration: none;
   letter-spacing: -0.02em;
 }
 .nav-logo span { color: var(--orange-500); }
-.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
 .nav-links a {
   color: var(--gray-600); text-decoration: none; font-size: 15px; font-weight: 500;
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--blue-900); }
 .nav-cta {
-  background: var(--orange-500); color: #fff !important; padding: 10px 24px;
+  background: var(--blue-600); color: #fff !important; padding: 10px 24px;
   border-radius: 8px; font-weight: 600; transition: all 0.2s;
 }
-.nav-cta:hover { background: var(--orange-600); transform: translateY(-1px); }
-.nav-phone {
-  font-weight: 700; color: var(--blue-900) !important; font-size: 15px;
-  display: flex; align-items: center; gap: 6px;
-}
+.nav-cta:hover { background: var(--blue-700); transform: translateY(-1px); }
 
 /* HERO */
 .hero {
-  background: linear-gradient(160deg, var(--blue-900) 0%, #0f3d6b 50%, var(--blue-700) 100%);
-  padding: 64px 0 72px;
+  background: linear-gradient(135deg, #1565c0 0%, #1e88e5 40%, #42a5f5 100%);
+  padding: 56px 0 100px;
   position: relative;
   overflow: hidden;
 }
 .hero::before {
   content: '';
-  position: absolute; top: -40%; right: -15%; width: 700px; height: 700px;
-  background: radial-gradient(circle, rgba(43,125,233,0.12) 0%, transparent 70%);
-  border-radius: 50%;
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 .hero::after {
   content: '';
-  position: absolute; bottom: -20%; left: -5%; width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(245,130,13,0.08) 0%, transparent 70%);
+  position: absolute; bottom: -60%; right: -10%; width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
   border-radius: 50%;
 }
-.hero .container { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 420px; gap: 56px; align-items: center; }
-.hero-content { }
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
-  padding: 8px 18px; border-radius: 100px; margin-bottom: 20px;
-  font-size: 14px; color: rgba(255,255,255,0.9); font-weight: 500;
+.hero .container {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
 }
-.hero-badge .dot { width: 8px; height: 8px; background: var(--green-500); border-radius: 50%; animation: dotPulse 2s infinite; }
-@keyframes dotPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.85); } }
-
+.hero-content { }
 .hero h1 {
-  font-size: clamp(34px, 4.5vw, 52px); font-weight: 900; color: #fff;
-  line-height: 1.08; margin-bottom: 18px; letter-spacing: -0.03em;
+  font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: #fff;
+  line-height: 1.12; margin-bottom: 14px; letter-spacing: -0.02em;
 }
 .hero h1 .highlight { color: var(--orange-400); }
 .hero-sub {
-  font-size: 18px; color: rgba(255,255,255,0.75); max-width: 520px;
-  margin-bottom: 32px; line-height: 1.55;
+  font-size: 18px; color: rgba(255,255,255,0.85); font-weight: 600;
+  margin-bottom: 28px;
 }
-.hero-stats {
-  display: flex; gap: 32px;
-}
-.hero-stat-number { font-size: 28px; font-weight: 800; color: #fff; }
-.hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
 
-/* HERO FORM */
-.hero-form-card {
+/* HERO STATS BAR */
+.hero-stats-bar {
+  display: inline-flex; align-items: center; gap: 0;
+  background: rgba(255,255,255,0.95); border-radius: 12px;
+  padding: 0; overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.hero-stat {
+  padding: 14px 22px; text-align: center;
+  border-right: 1px solid var(--gray-200);
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat-number {
+  font-size: 20px; font-weight: 900; color: var(--blue-600);
+  line-height: 1.2;
+}
+.hero-stat-label {
+  font-size: 11px; color: var(--gray-500); font-weight: 600;
+  white-space: nowrap;
+}
+.hero-stat-stars { color: var(--orange-500); font-size: 11px; }
+
+/* CALCULATOR IMAGES */
+.hero-calculators {
+  position: relative; height: 380px;
+}
+.calc-svg {
+  position: absolute;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+  transition: transform 0.4s ease;
+}
+.calc-svg:hover { transform: scale(1.05) !important; }
+.calc-1 { width: 160px; top: 10px; right: 30px; transform: rotate(5deg); z-index: 3; }
+.calc-2 { width: 145px; top: 40px; right: 180px; transform: rotate(-8deg); z-index: 2; }
+.calc-3 { width: 135px; top: 80px; right: 0px; transform: rotate(12deg); z-index: 1; opacity: 0.85; }
+.calc-4 { width: 125px; top: 5px; right: 290px; transform: rotate(-3deg); z-index: 1; opacity: 0.7; }
+
+/* FORM CARD - CENTERED BELOW HERO */
+.form-section {
+  margin-top: -60px; position: relative; z-index: 10;
+  padding-bottom: 0;
+}
+.form-card {
+  max-width: 720px; margin: 0 auto;
   background: #fff;
   border-radius: var(--radius-xl);
-  padding: 36px 32px;
-  box-shadow: 0 30px 60px -12px rgba(0,0,0,0.35);
+  padding: 40px 44px;
+  box-shadow: 0 20px 60px -12px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.03);
 }
-.hero-form-card h3 {
+.form-card h3 {
   font-size: 22px; font-weight: 800; text-align: center; margin-bottom: 4px;
   color: var(--blue-900);
 }
-.hero-form-card .form-sub {
+.form-card .form-sub {
   text-align: center; color: var(--gray-500); font-size: 14px; margin-bottom: 24px;
 }
-.form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
 .form-group label {
-  font-size: 12px; font-weight: 700; color: var(--gray-600); text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-size: 14px; font-weight: 700; color: var(--gray-700);
 }
+.form-group label .optional { font-weight: 400; color: var(--gray-400); font-size: 13px; }
 .form-group input, .form-group textarea {
-  padding: 13px 16px; border: 1.5px solid var(--gray-200); border-radius: 10px;
+  padding: 14px 16px; border: 1.5px solid var(--gray-200); border-radius: 10px;
   font-size: 15px; font-family: inherit; color: var(--gray-800);
-  transition: all 0.2s; background: var(--gray-50);
+  transition: all 0.2s; background: #fff;
   -webkit-appearance: none; resize: vertical;
 }
 .form-group input:focus, .form-group textarea:focus {
@@ -160,18 +187,16 @@ nav .container {
   box-shadow: 0 0 0 4px rgba(43,125,233,0.08);
 }
 .form-group input::placeholder, .form-group textarea::placeholder { color: var(--gray-400); }
-.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.form-row-2 .form-group { margin-bottom: 0; }
 
 /* PULSING CTA */
 .form-submit {
-  width: 100%; padding: 18px;
+  width: 100%; padding: 20px;
   background: linear-gradient(135deg, var(--orange-500) 0%, #e06800 100%);
   color: #fff; border: none; border-radius: 12px;
-  font-size: 17px; font-weight: 800; font-family: inherit;
+  font-size: 18px; font-weight: 800; font-family: inherit;
   cursor: pointer; transition: all 0.3s;
-  margin-top: 6px;
-  letter-spacing: 0.02em;
+  margin-top: 4px;
+  letter-spacing: 0.03em; text-transform: uppercase;
   box-shadow: 0 4px 20px rgba(245,130,13,0.35);
   animation: btnPulse 2.5s ease-in-out infinite;
   position: relative;
@@ -181,7 +206,7 @@ nav .container {
   content: '';
   position: absolute;
   top: 0; left: -100%; width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
   animation: shimmer 3s ease-in-out infinite;
 }
 @keyframes shimmer {
@@ -190,35 +215,68 @@ nav .container {
 }
 @keyframes btnPulse {
   0%, 100% { transform: scale(1); box-shadow: 0 4px 20px rgba(245,130,13,0.35); }
-  50% { transform: scale(1.02); box-shadow: 0 6px 30px rgba(245,130,13,0.5); }
+  50% { transform: scale(1.015); box-shadow: 0 6px 30px rgba(245,130,13,0.5); }
 }
 .form-submit:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
   box-shadow: 0 8px 30px rgba(245,130,13,0.5);
   animation: none;
 }
-.form-guarantee {
-  display: flex; align-items: center; justify-content: center; gap: 6px;
-  margin-top: 14px; font-size: 12px; color: var(--gray-500);
-}
-.form-guarantee svg { flex-shrink: 0; }
 
-/* TRUST BAR */
-.trust-bar {
-  background: #fff; border-bottom: 1px solid var(--gray-100);
-  padding: 20px 0;
+/* TRUST BADGES - BELOW FORM */
+.trust-badges {
+  display: flex; justify-content: center; gap: 28px; flex-wrap: wrap;
+  margin-top: 28px; padding-top: 24px;
+  border-top: 1px solid var(--gray-100);
 }
-.trust-bar-inner {
+.trust-badge-item {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  text-align: center;
+}
+.trust-badge-icon {
+  width: 42px; height: 42px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.trust-badge-icon.green { background: var(--green-100); }
+.trust-badge-icon.blue { background: var(--blue-100); }
+.trust-badge-icon.orange { background: #fff3e0; }
+.trust-badge-label {
+  font-size: 11px; font-weight: 700; color: var(--gray-600);
+  line-height: 1.3; max-width: 90px;
+}
+
+/* HIGHLIGHT BAR */
+.highlight-bar {
+  background: var(--gray-50); border-top: 1px solid var(--gray-100); border-bottom: 1px solid var(--gray-100);
+  padding: 18px 0; text-align: center;
+  margin-top: 32px;
+}
+.highlight-bar-inner {
   display: flex; justify-content: center; align-items: center; gap: 32px; flex-wrap: wrap;
+  font-size: 16px; font-weight: 700; color: var(--gray-800);
 }
-.trust-bar-item {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 13px; font-weight: 600; color: var(--gray-600);
+.highlight-bar-inner span { display: flex; align-items: center; gap: 8px; }
+.highlight-bar-inner .emoji { font-size: 20px; }
+
+/* VALUE PROPS ROW */
+.value-props {
+  padding: 32px 0 40px; background: #fff;
 }
-.trust-bar-item .icon { font-size: 18px; }
+.value-props-inner {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+}
+.value-prop {
+  display: flex; align-items: start; gap: 10px;
+  font-size: 14px; color: var(--gray-700); font-weight: 500; line-height: 1.45;
+}
+.value-prop .vp-check {
+  color: var(--green-500); font-size: 18px; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+}
+.value-prop strong { font-weight: 700; color: var(--gray-900); }
 
 /* LOGOS SECTION */
-.logos-section { padding: 56px 0; text-align: center; background: var(--gray-50); }
+.logos-section { padding: 48px 0; text-align: center; background: var(--gray-50); border-top: 1px solid var(--gray-100); }
 .logos-section .section-label {
   font-size: 12px; font-weight: 700; text-transform: uppercase;
   letter-spacing: 0.12em; color: var(--gray-400); margin-bottom: 28px;
@@ -301,30 +359,8 @@ nav .container {
 .test-badge:hover { border-color: var(--blue-400); background: var(--blue-50); }
 .test-badge .check { color: var(--green-500); font-size: 16px; }
 
-/* RISK */
-.risk-section { padding: 72px 0; background: var(--gray-50); }
-.risk-section .section-header { text-align: center; margin-bottom: 44px; }
-.risk-section h2 { font-size: 34px; font-weight: 800; color: var(--blue-900); margin-bottom: 10px; }
-.risk-section .section-sub { color: var(--gray-500); font-size: 17px; }
-.risk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.risk-card {
-  background: #fff; border-radius: var(--radius-lg); padding: 28px;
-  box-shadow: var(--shadow-sm); border: 1px solid var(--gray-100); transition: all 0.3s;
-}
-.risk-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-.risk-card-icon {
-  width: 48px; height: 48px; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px; margin-bottom: 14px;
-}
-.risk-card-icon.blue { background: var(--blue-100); }
-.risk-card-icon.green { background: var(--green-100); }
-.risk-card-icon.orange { background: #fff3e0; }
-.risk-card h3 { font-size: 16px; font-weight: 700; color: var(--gray-900); margin-bottom: 6px; }
-.risk-card p { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
-
 /* PRICING */
-.pricing-section { padding: 72px 0; background: #fff; }
+.pricing-section { padding: 72px 0; background: var(--gray-50); }
 .pricing-section .section-header { text-align: center; margin-bottom: 44px; }
 .pricing-section h2 { font-size: 34px; font-weight: 800; color: var(--blue-900); margin-bottom: 10px; }
 .pricing-section .section-sub { color: var(--gray-500); font-size: 17px; }
@@ -332,6 +368,7 @@ nav .container {
 .pricing-card {
   border-radius: var(--radius-lg); padding: 32px; text-align: center;
   border: 2px solid var(--gray-200); transition: all 0.3s; position: relative;
+  background: #fff;
 }
 .pricing-card:hover { border-color: var(--blue-400); }
 .pricing-card.featured { border-color: var(--blue-500); box-shadow: var(--shadow-xl); transform: scale(1.03); }
@@ -404,24 +441,32 @@ footer .footer-links { display: flex; justify-content: center; gap: 24px; margin
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-  .hero .container { grid-template-columns: 1fr; gap: 40px; }
+  .hero .container { grid-template-columns: 1fr; gap: 20px; }
   .hero-content { text-align: center; }
-  .hero-sub { margin-left: auto; margin-right: auto; }
-  .hero-stats { justify-content: center; }
-  .hero-form-card { max-width: 480px; margin: 0 auto; }
+  .hero-calculators { height: 220px; display: flex; justify-content: center; }
+  .calc-1 { position: relative; top: auto; right: auto; transform: none; width: 120px; }
+  .calc-2 { position: relative; top: auto; right: auto; transform: rotate(-5deg); width: 110px; margin-left: -30px; }
+  .calc-3 { position: relative; top: auto; right: auto; transform: rotate(5deg); width: 100px; margin-left: -30px; }
+  .calc-4 { display: none; }
+  .hero-stats-bar { flex-wrap: wrap; gap: 0; }
+  .hero-stat { padding: 10px 16px; }
+  .form-card { padding: 28px 20px; }
+  .form-row-2 { grid-template-columns: 1fr; }
+  .trust-badges { gap: 16px; }
+  .value-props-inner { grid-template-columns: 1fr 1fr; }
   .personal-section .container { grid-template-columns: 1fr; }
-  .benefits-grid, .risk-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
+  .benefits-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
   .pricing-card.featured { transform: none; }
   .nav-links { display: none; }
-  .hero h1 { font-size: 32px; }
-  .logos-grid { gap: 28px; }
-  .logo-item img { height: 32px; }
+  .highlight-bar-inner { gap: 20px; font-size: 14px; }
 }
 
 @media (max-width: 600px) {
-  .form-row-2 { grid-template-columns: 1fr; }
-  .trust-bar-inner { gap: 16px; }
-  .hero-stats { flex-wrap: wrap; gap: 20px; }
+  .hero-stats-bar { border-radius: 8px; }
+  .hero-stat { padding: 8px 12px; }
+  .hero-stat-number { font-size: 16px; }
+  .value-props-inner { grid-template-columns: 1fr; }
+  .trust-badges { gap: 12px; }
 }
 
 /* ANIMATIONS */
@@ -442,40 +487,245 @@ footer .footer-links { display: flex; justify-content: center; gap: 24px; margin
   <div class="container">
     <a href="#" class="nav-logo">Math<span>4</span>Sale</a>
     <ul class="nav-links">
-      <li><a href="#" class="nav-phone">&#9742; (800) 672-4410</a></li>
+      <li><a href="#">Home</a></li>
       <li><a href="#">Products</a></li>
       <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact</a></li>
       <li><a href="#quote" class="nav-cta">Get a Quote</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- HERO + FORM -->
-<section class="hero" id="quote">
+<!-- HERO -->
+<section class="hero">
   <div class="container">
     <div class="hero-content">
-      <div class="hero-badge"><span class="dot"></span> Trusted by 8,000+ Schools Nationwide</div>
-      <h1>Get Your Bulk Calculator Quote <span class="highlight">in Seconds</span></h1>
-      <p class="hero-sub">The #1 source for TI graphing calculators. Best prices guaranteed, 90-day returns, and a 1-year warranty that actually replaces your calculator.</p>
-      <div class="hero-stats">
-        <div>
-          <div class="hero-stat-number">20+</div>
+      <h1>Why 8,000+ Schools Trust Math4Sale<br><span class="highlight">Get a Quote in Seconds!</span></h1>
+      <p class="hero-sub">Best Price Guarantee!</p>
+      <div class="hero-stats-bar">
+        <div class="hero-stat">
+          <div class="hero-stat-number">8,000+</div>
+          <div class="hero-stat-label">Schools love us</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">20</div>
           <div class="hero-stat-label">Years in Business</div>
         </div>
-        <div>
+        <div class="hero-stat">
           <div class="hero-stat-number">40,000+</div>
-          <div class="hero-stat-label">5-Star Reviews</div>
+          <div class="hero-stat-label"><span class="hero-stat-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> reviews</div>
         </div>
-        <div>
-          <div class="hero-stat-number">1M+</div>
-          <div class="hero-stat-label">Calculators Sold</div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">1,000,000+</div>
+          <div class="hero-stat-label">Calculators sold</div>
         </div>
       </div>
     </div>
 
-    <div class="hero-form-card" id="quote-form">
-      <h3>Get Your Free Quote</h3>
-      <p class="form-sub">No obligation. All 3 price tiers included.</p>
+    <div class="hero-calculators">
+      <!-- Calculator 1 (front, largest) -->
+      <svg class="calc-svg calc-1" viewBox="0 0 140 280" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="body1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2a2d35"/><stop offset="100%" stop-color="#1a1d25"/></linearGradient>
+          <linearGradient id="screen1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c8d8c0"/><stop offset="100%" stop-color="#a8b8a0"/></linearGradient>
+        </defs>
+        <rect x="2" y="2" width="136" height="276" rx="12" fill="url(#body1)" stroke="#444" stroke-width="1"/>
+        <!-- School Property yellow band -->
+        <rect x="2" y="2" width="136" height="22" rx="12" fill="#f5c518"/>
+        <rect x="2" y="14" width="136" height="10" fill="#f5c518"/>
+        <text x="70" y="16" text-anchor="middle" font-size="7" font-weight="800" fill="#1a1a1a" font-family="Arial">SCHOOL PROPERTY</text>
+        <!-- Brand -->
+        <text x="70" y="38" text-anchor="middle" font-size="6" fill="#888" font-family="Arial" font-weight="600">TEXAS INSTRUMENTS</text>
+        <!-- Screen -->
+        <rect x="16" y="44" width="108" height="68" rx="4" fill="url(#screen1)" stroke="#555" stroke-width="1"/>
+        <text x="70" y="72" text-anchor="middle" font-size="9" fill="#2a4a20" font-family="monospace" font-weight="700">TI-84 Plus CE</text>
+        <text x="70" y="86" text-anchor="middle" font-size="7" fill="#3a5a30" font-family="monospace">Classroom Ed.</text>
+        <!-- Nav cluster -->
+        <circle cx="50" cy="128" r="8" fill="#555" stroke="#666" stroke-width="0.5"/>
+        <rect x="46" y="120" width="8" height="16" rx="1" fill="#666"/>
+        <rect x="42" y="124" width="16" height="8" rx="1" fill="#666"/>
+        <circle cx="50" cy="128" r="4" fill="#444"/>
+        <!-- Side buttons -->
+        <rect x="80" y="120" width="18" height="8" rx="2" fill="#555"/>
+        <rect x="80" y="132" width="18" height="8" rx="2" fill="#555"/>
+        <rect x="104" y="120" width="18" height="8" rx="2" fill="#555"/>
+        <rect x="104" y="132" width="18" height="8" rx="2" fill="#555"/>
+        <!-- Function buttons row 1 -->
+        <rect x="14" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="38" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="62" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="86" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="110" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <!-- Function buttons row 2 -->
+        <rect x="14" y="162" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="38" y="162" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="62" y="162" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="86" y="162" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="110" y="162" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <!-- Function buttons row 3 -->
+        <rect x="14" y="176" width="20" height="10" rx="2" fill="#555"/>
+        <rect x="38" y="176" width="20" height="10" rx="2" fill="#555"/>
+        <rect x="62" y="176" width="20" height="10" rx="2" fill="#555"/>
+        <rect x="86" y="176" width="20" height="10" rx="2" fill="#555"/>
+        <rect x="110" y="176" width="20" height="10" rx="2" fill="#555"/>
+        <!-- Number pad -->
+        <rect x="14" y="194" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="38" y="194" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="62" y="194" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="86" y="194" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="110" y="194" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="14" y="214" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="38" y="214" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="62" y="214" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="86" y="214" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="110" y="214" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="14" y="234" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="38" y="234" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="62" y="234" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="86" y="234" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="110" y="234" width="20" height="14" rx="3" fill="#666"/>
+        <!-- Bottom row -->
+        <rect x="14" y="254" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="38" y="254" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="62" y="254" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="86" y="254" width="44" height="14" rx="3" fill="#4a7abc"/>
+        <!-- Number labels -->
+        <text x="24" y="204" text-anchor="middle" font-size="8" fill="#333" font-family="Arial" font-weight="700">7</text>
+        <text x="48" y="204" text-anchor="middle" font-size="8" fill="#333" font-family="Arial" font-weight="700">8</text>
+        <text x="72" y="204" text-anchor="middle" font-size="8" fill="#333" font-family="Arial" font-weight="700">9</text>
+        <text x="24" y="224" text-anchor="middle" font-size="8" fill="#333" font-family="Arial" font-weight="700">4</text>
+        <text x="48" y="224" text-anchor="middle" font-size="8" fill="#333" font-family="Arial" font-weight="700">5</text>
+        <text x="72" y="224" text-anchor="middle" font-size="8" fill="#333" font-family="Arial" font-weight="700">6</text>
+        <text x="24" y="244" text-anchor="middle" font-size="8" fill="#333" font-family="Arial" font-weight="700">1</text>
+        <text x="48" y="244" text-anchor="middle" font-size="8" fill="#333" font-family="Arial" font-weight="700">2</text>
+        <text x="72" y="244" text-anchor="middle" font-size="8" fill="#333" font-family="Arial" font-weight="700">3</text>
+        <text x="24" y="264" text-anchor="middle" font-size="8" fill="#333" font-family="Arial" font-weight="700">0</text>
+        <text x="48" y="264" text-anchor="middle" font-size="8" fill="#333" font-family="Arial" font-weight="700">.</text>
+        <text x="108" y="264" text-anchor="middle" font-size="8" fill="#fff" font-family="Arial" font-weight="700">ENTER</text>
+      </svg>
+      <!-- Calculator 2 -->
+      <svg class="calc-svg calc-2" viewBox="0 0 140 280" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="136" height="276" rx="12" fill="#22252d" stroke="#444" stroke-width="1"/>
+        <rect x="2" y="2" width="136" height="22" rx="12" fill="#f5c518"/>
+        <rect x="2" y="14" width="136" height="10" fill="#f5c518"/>
+        <text x="70" y="16" text-anchor="middle" font-size="7" font-weight="800" fill="#1a1a1a" font-family="Arial">SCHOOL PROPERTY</text>
+        <text x="70" y="38" text-anchor="middle" font-size="6" fill="#888" font-family="Arial" font-weight="600">TEXAS INSTRUMENTS</text>
+        <rect x="16" y="44" width="108" height="68" rx="4" fill="#b0c8a8" stroke="#555" stroke-width="1"/>
+        <text x="70" y="72" text-anchor="middle" font-size="9" fill="#2a4a20" font-family="monospace" font-weight="700">TI-84 Plus CE</text>
+        <text x="70" y="86" text-anchor="middle" font-size="7" fill="#3a5a30" font-family="monospace">Classroom Ed.</text>
+        <circle cx="50" cy="128" r="8" fill="#555"/>
+        <rect x="14" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="38" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="62" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="86" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="110" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="14" y="162" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="38" y="162" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="62" y="162" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="86" y="162" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="110" y="162" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="14" y="176" width="20" height="10" rx="2" fill="#555"/>
+        <rect x="38" y="176" width="20" height="10" rx="2" fill="#555"/>
+        <rect x="62" y="176" width="20" height="10" rx="2" fill="#555"/>
+        <rect x="86" y="176" width="20" height="10" rx="2" fill="#555"/>
+        <rect x="110" y="176" width="20" height="10" rx="2" fill="#555"/>
+        <rect x="14" y="194" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="38" y="194" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="62" y="194" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="86" y="194" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="110" y="194" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="14" y="214" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="38" y="214" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="62" y="214" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="86" y="214" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="110" y="214" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="14" y="234" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="38" y="234" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="62" y="234" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="86" y="234" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="110" y="234" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="14" y="254" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="38" y="254" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="62" y="254" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="86" y="254" width="44" height="14" rx="3" fill="#4a7abc"/>
+      </svg>
+      <!-- Calculator 3 -->
+      <svg class="calc-svg calc-3" viewBox="0 0 140 280" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="136" height="276" rx="12" fill="#1e2128" stroke="#444" stroke-width="1"/>
+        <rect x="2" y="2" width="136" height="22" rx="12" fill="#f5c518"/>
+        <rect x="2" y="14" width="136" height="10" fill="#f5c518"/>
+        <text x="70" y="16" text-anchor="middle" font-size="7" font-weight="800" fill="#1a1a1a" font-family="Arial">SCHOOL PROPERTY</text>
+        <text x="70" y="38" text-anchor="middle" font-size="6" fill="#888" font-family="Arial" font-weight="600">TEXAS INSTRUMENTS</text>
+        <rect x="16" y="44" width="108" height="68" rx="4" fill="#b0c8a8" stroke="#555" stroke-width="1"/>
+        <circle cx="50" cy="128" r="8" fill="#555"/>
+        <rect x="14" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="38" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="62" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="86" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="110" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="14" y="162" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="38" y="162" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="62" y="162" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="86" y="162" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="110" y="162" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="14" y="176" width="20" height="10" rx="2" fill="#555"/>
+        <rect x="38" y="176" width="20" height="10" rx="2" fill="#555"/>
+        <rect x="62" y="176" width="20" height="10" rx="2" fill="#555"/>
+        <rect x="86" y="176" width="20" height="10" rx="2" fill="#555"/>
+        <rect x="110" y="176" width="20" height="10" rx="2" fill="#555"/>
+        <rect x="14" y="194" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="38" y="194" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="62" y="194" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="86" y="194" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="110" y="194" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="14" y="214" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="38" y="214" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="62" y="214" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="86" y="214" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="110" y="214" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="14" y="234" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="38" y="234" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="62" y="234" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="86" y="234" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="110" y="234" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="14" y="254" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="38" y="254" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="62" y="254" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="86" y="254" width="44" height="14" rx="3" fill="#4a7abc"/>
+      </svg>
+      <!-- Calculator 4 (background) -->
+      <svg class="calc-svg calc-4" viewBox="0 0 140 280" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="136" height="276" rx="12" fill="#252830" stroke="#444" stroke-width="1"/>
+        <rect x="2" y="2" width="136" height="22" rx="12" fill="#f5c518"/>
+        <rect x="2" y="14" width="136" height="10" fill="#f5c518"/>
+        <text x="70" y="38" text-anchor="middle" font-size="6" fill="#888" font-family="Arial" font-weight="600">TEXAS INSTRUMENTS</text>
+        <rect x="16" y="44" width="108" height="68" rx="4" fill="#b0c8a8" stroke="#555" stroke-width="1"/>
+        <circle cx="50" cy="128" r="8" fill="#555"/>
+        <rect x="14" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="38" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="62" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="86" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="110" y="148" width="20" height="10" rx="2" fill="#4a7abc"/>
+        <rect x="14" y="194" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="38" y="194" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="62" y="194" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="86" y="194" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="110" y="194" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="14" y="214" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="38" y="214" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="62" y="214" width="20" height="14" rx="3" fill="#eee"/>
+        <rect x="86" y="214" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="110" y="214" width="20" height="14" rx="3" fill="#666"/>
+        <rect x="86" y="254" width="44" height="14" rx="3" fill="#4a7abc"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- FORM CARD - CENTERED -->
+<div class="form-section" id="quote">
+  <div class="container">
+    <div class="form-card" id="quote-form">
       <form>
         <div class="form-row-2">
           <div class="form-group">
@@ -483,35 +733,81 @@ footer .footer-links { display: flex; justify-content: center; gap: 24px; margin
             <input type="email" placeholder="you@school.edu" required>
           </div>
           <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" placeholder="(555) 123-4567" required>
+            <label>Phone Number <span class="optional">(Optional)</span></label>
+            <input type="tel" placeholder="(555) 123-4567">
           </div>
         </div>
         <div class="form-group">
-          <label>What Do You Need?</label>
-          <textarea rows="3" placeholder="e.g. 30 TI-84 Plus CE calculators for our math department, need by August..."></textarea>
+          <label>Describe what you want quoted</label>
+          <textarea rows="4" placeholder="Please include the models (TI-83 Plus, TI-84 Plus, TI-84 Plus CE, TI-84 CE School Property) and quantities you need."></textarea>
         </div>
-        <button type="submit" class="form-submit">Get My Quote in Seconds &#8594;</button>
-        <div class="form-guarantee">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="#00a67e"><path d="M8 1a2.5 2.5 0 0 0-2.5 2.5V5h5V3.5A2.5 2.5 0 0 0 8 1zm3.5 4V3.5a3.5 3.5 0 1 0-7 0V5H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-1.5z"/></svg>
-          No spam, ever. Quote valid for 30 days.
-        </div>
+        <button type="submit" class="form-submit">Get My Quote in Seconds</button>
       </form>
+
+      <!-- Trust Badges -->
+      <div class="trust-badges">
+        <div class="trust-badge-item">
+          <div class="trust-badge-icon green">&#128178;</div>
+          <div class="trust-badge-label">Price Match Guarantee</div>
+        </div>
+        <div class="trust-badge-item">
+          <div class="trust-badge-icon blue">&#128666;</div>
+          <div class="trust-badge-label">Free Shipping over $4,500</div>
+        </div>
+        <div class="trust-badge-item">
+          <div class="trust-badge-icon blue">&#128203;</div>
+          <div class="trust-badge-label">POs Accepted</div>
+        </div>
+        <div class="trust-badge-item">
+          <div class="trust-badge-icon orange">&#127963;</div>
+          <div class="trust-badge-label">Tax Exempt</div>
+        </div>
+        <div class="trust-badge-item">
+          <div class="trust-badge-icon green">&#8617;&#65039;</div>
+          <div class="trust-badge-label">90-Day Returns</div>
+        </div>
+        <div class="trust-badge-item">
+          <div class="trust-badge-icon blue">&#128295;</div>
+          <div class="trust-badge-label">1-Year Warranty</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HIGHLIGHT BAR -->
+<div class="highlight-bar">
+  <div class="container">
+    <div class="highlight-bar-inner">
+      <span><span class="emoji">&#128176;</span> 3 Price Tiers (For ANY Budget)</span>
+      <span><span class="emoji">&#9989;</span> Test Approved</span>
+    </div>
+  </div>
+</div>
+
+<!-- VALUE PROPS ROW -->
+<section class="value-props">
+  <div class="container">
+    <div class="value-props-inner">
+      <div class="value-prop">
+        <span class="vp-check">&#10003;</span>
+        <div><strong>#1 Trusted source of Calculators for Schools</strong></div>
+      </div>
+      <div class="value-prop">
+        <span class="vp-check">&#10003;</span>
+        <div><strong>No commitment required</strong></div>
+      </div>
+      <div class="value-prop">
+        <span class="vp-check">&#10003;</span>
+        <div><strong>Price Flexibility Up to 30% OFF!</strong> (New, Institutional, Factory Renewed)</div>
+      </div>
+      <div class="value-prop">
+        <span class="vp-check">&#10003;</span>
+        <div><strong>Owner follow-up call included</strong></div>
+      </div>
     </div>
   </div>
 </section>
-
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="trust-bar-inner">
-    <div class="trust-bar-item"><span class="icon">&#9989;</span> Price Match Guarantee</div>
-    <div class="trust-bar-item"><span class="icon">&#128666;</span> Free Shipping Over $4,500</div>
-    <div class="trust-bar-item"><span class="icon">&#128203;</span> Purchase Orders Accepted</div>
-    <div class="trust-bar-item"><span class="icon">&#127963;</span> Tax Exempt Ready</div>
-    <div class="trust-bar-item"><span class="icon">&#8617;</span> 90-Day Returns</div>
-    <div class="trust-bar-item"><span class="icon">&#128295;</span> 1-Year Warranty</div>
-  </div>
-</div>
 
 <!-- TRUSTED BY LOGOS -->
 <section class="logos-section">
@@ -557,7 +853,7 @@ footer .footer-links { display: flex; justify-content: center; gap: 24px; margin
       </div>
       <div class="benefit-card">
         <div class="benefit-card-icon green">&#9889;</div>
-        <h3>Same-Day Quotes & Shipping</h3>
+        <h3>Same-Day Quotes &amp; Shipping</h3>
         <p>Most quotes delivered within hours. When in stock, orders ship the same day. No waiting weeks for procurement.</p>
       </div>
       <div class="benefit-card">
@@ -730,7 +1026,6 @@ document.querySelectorAll('a[href="#quote"]').forEach(a => {
   });
 });
 
-// Intersection observer for animations
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -740,7 +1035,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.benefit-card, .risk-card, .testimonial-card, .pricing-card').forEach(el => {
+document.querySelectorAll('.benefit-card, .testimonial-card, .pricing-card').forEach(el => {
   observer.observe(el);
 });
 </script>
