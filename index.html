@@ -180,9 +180,10 @@ nav .container {
 }
 .hero h1 .highlight { color: var(--orange-400); }
 .hero-sub {
-  font-size: 26px; color: rgba(255,255,255,0.95); font-weight: 700;
-  margin-bottom: 28px; letter-spacing: -0.01em;
+  font-size: 18px; color: rgba(255,255,255,0.95); font-weight: 700;
+  margin-bottom: 20px; letter-spacing: 0.02em;
 }
+.hero-sub .highlight { color: var(--orange-400); }
 
 /* HERO STATS BAR */
 .hero-stats-bar {
@@ -201,7 +202,7 @@ nav .container {
   border-radius: 16px 16px 0 0;
 }
 .hero-stat {
-  padding: 14px 22px; text-align: center;
+  padding: 10px 18px; text-align: center;
   border-right: 1px solid rgba(0,0,0,0.06);
   position: relative;
   transition: all 0.3s;
@@ -211,7 +212,7 @@ nav .container {
   background: rgba(43,125,233,0.04);
 }
 .hero-stat-number {
-  font-size: 22px; font-weight: 900; line-height: 1.2;
+  font-size: 20px; font-weight: 900; line-height: 1.2; white-space: nowrap;
   background: linear-gradient(135deg, var(--blue-600), var(--blue-500));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -256,7 +257,7 @@ nav .container {
   box-shadow: 0 20px 60px -12px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.03);
 }
 .form-card h3 {
-  font-size: 22px; font-weight: 800; text-align: center; margin-bottom: 4px;
+  font-size: 28px; font-weight: 800; text-align: center; margin-bottom: 6px;
   color: var(--blue-900);
 }
 .form-card .form-sub {
@@ -681,7 +682,8 @@ footer .footer-links { display: flex; justify-content: center; gap: 24px; margin
   </div>
   <div class="container">
     <div class="hero-content">
-      <h1>The Lowest Prices on Classroom Calculators. Guaranteed.<br><span class="highlight">Save 15-30% on Every Order</span></h1>
+      <h1>The Lowest Prices on Classroom Calculators. Guaranteed.</h1>
+      <p class="hero-sub"><span class="highlight">Save 15-30% on Every Order</span></p>
       <div class="hero-stats-bar">
         <div class="hero-stat">
           <div class="hero-stat-number">8,000+</div>
