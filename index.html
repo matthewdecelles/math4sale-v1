@@ -223,18 +223,107 @@ nav .container {
 }
 .hero-stat-stars { color: var(--orange-500); font-size: 12px; letter-spacing: 1px; }
 
-/* CALCULATOR IMAGE */
+/* CALCULATOR PRODUCT SHOWCASE */
 .hero-calculators {
-  position: relative; height: 380px;
+  position: relative; height: 440px;
   display: flex; align-items: center; justify-content: center;
 }
-.hero-calculators img {
-  max-height: 420px; width: auto; max-width: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 15px 40px rgba(0,0,0,0.35));
-  transition: transform 0.4s ease;
+/* Outermost ambient glow ring */
+.hero-calculators::before {
+  content: '';
+  position: absolute;
+  width: 480px; height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(255,255,255,0.06) 0%,
+    rgba(255,255,255,0.03) 40%,
+    transparent 70%
+  );
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: showcaseGlow 5s ease-in-out infinite;
+  z-index: 0;
 }
-.hero-calculators img:hover { transform: scale(1.03); }
+/* Soft ring accent */
+.hero-calculators::after {
+  content: '';
+  position: absolute;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.06);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+@keyframes showcaseGlow {
+  0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+}
+
+/* The circular stage that clips and holds the product */
+.calc-showcase {
+  position: relative; z-index: 1;
+  width: 380px; height: 380px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle at 40% 35%,
+    rgba(255,255,255,0.18) 0%,
+    rgba(255,255,255,0.06) 35%,
+    rgba(30,136,229,0.15) 70%,
+    rgba(21,101,192,0.3) 100%
+  );
+  box-shadow:
+    0 30px 80px -20px rgba(0,0,0,0.35),
+    0 10px 30px -10px rgba(0,0,0,0.2),
+    inset 0 0 60px rgba(255,255,255,0.05),
+    0 0 0 1px rgba(255,255,255,0.08);
+  animation: heroFloat 6s ease-in-out infinite;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease;
+}
+.calc-showcase:hover {
+  transform: scale(1.03) translateY(-6px);
+  box-shadow:
+    0 40px 100px -20px rgba(0,0,0,0.4),
+    0 15px 40px -10px rgba(0,0,0,0.25),
+    inset 0 0 80px rgba(255,255,255,0.08),
+    0 0 0 1px rgba(255,255,255,0.12);
+}
+/* Glossy highlight on the stage */
+.calc-showcase::before {
+  content: '';
+  position: absolute;
+  top: -40%; left: -20%; right: -20%;
+  height: 80%;
+  background: radial-gradient(ellipse at 50% 80%,
+    rgba(255,255,255,0.12) 0%,
+    transparent 60%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+/* Inner shadow for depth */
+.calc-showcase::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 -20px 40px rgba(0,0,0,0.15), inset 0 4px 20px rgba(255,255,255,0.05);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.calc-showcase img {
+  width: 110%; height: 110%;
+  object-fit: cover;
+  object-position: center 45%;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
 
 /* FORM CARD - CENTERED BELOW HERO */
 .form-section {
@@ -491,8 +580,10 @@ footer .footer-links { display: flex; justify-content: center; gap: 24px; margin
 @media (max-width: 900px) {
   .hero .container { grid-template-columns: 1fr; gap: 20px; }
   .hero-content { text-align: center; }
-  .hero-calculators { height: 260px; }
-  .hero-calculators img { max-height: 260px; }
+  .hero-calculators { height: 300px; }
+  .calc-showcase { width: 280px; height: 280px; }
+  .hero-calculators::before { width: 340px; height: 340px; }
+  .hero-calculators::after { width: 310px; height: 310px; }
   .hero-stats-bar { flex-wrap: wrap; gap: 0; }
   .hero-stat { padding: 10px 16px; }
   .form-card { padding: 28px 20px; }
@@ -583,7 +674,9 @@ footer .footer-links { display: flex; justify-content: center; gap: 24px; margin
     </div>
 
     <div class="hero-calculators">
-      <img src="calculators.jpg" alt="TI-84 Plus EZ Spot calculators - bulk school property editions fanned out">
+      <div class="calc-showcase">
+        <img src="calculators.jpg" alt="TI-84 Plus EZ Spot calculators - bulk school property editions fanned out">
+      </div>
     </div>
   </div>
 </section>
